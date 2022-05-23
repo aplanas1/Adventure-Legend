@@ -11,5 +11,5 @@ dest_files=[ "res://.import/inventory-open.ogg-8ace9b85187f52625f6aff62c4e6bcee.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

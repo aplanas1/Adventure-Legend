@@ -11,5 +11,5 @@ dest_files=[ "res://.import/click-less-pitch.ogg-6c018c0581eb4638041a302b7674642
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
