@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/Player.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Sounds/Swipe.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Sounds/Evade.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Shaders/WhiteColor.shader" type="Shader" id=9]
+[ext_resource path="res://Assets/Player/player2.png" type="Texture" id=10]
 
 [sub_resource type="ShaderMaterial" id=51]
 shader = ExtResource( 9 )
@@ -641,6 +642,79 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 6 ]
 }
 
+[sub_resource type="Animation" id=53]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=54]
+resource_name = "RunLeft"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "RunRight"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="AnimationNodeAnimation" id=29]
 animation = "AttackLeft"
 
@@ -764,8 +838,27 @@ states/Run/node = SubResource( 20 )
 states/Run/position = Vector2( 829, 95 )
 transitions = [ "Idle", "Run", SubResource( 23 ), "Run", "Idle", SubResource( 24 ), "Attack", "Idle", SubResource( 34 ), "Idle", "Attack", SubResource( 35 ), "Roll", "Idle", SubResource( 46 ), "Idle", "Roll", SubResource( 47 ) ]
 start_node = "Idle"
+graph_offset = Vector2( 234, 1 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
+
+[sub_resource type="AnimationNodeAnimation" id=58]
+animation = "RunLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=59]
+animation = "RunLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=55]
+blend_point_0/node = SubResource( 58 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 59 )
+blend_point_1/pos = Vector2( 1, 0 )
+
+[sub_resource type="AnimationNodeStateMachine" id=56]
+states/Run/node = SubResource( 55 )
+states/Run/position = Vector2( 427, 92 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=57]
 
 [sub_resource type="CapsuleShape2D" id=36]
 height = 12.0
@@ -822,6 +915,14 @@ texture = ExtResource( 2 )
 hframes = 60
 frame = 18
 
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 30, -13 )
+texture = ExtResource( 10 )
+flip_h = true
+hframes = 6
+vframes = 5
+frame = 7
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 rotation = -1.5708
@@ -847,6 +948,11 @@ anims/RunLeft = SubResource( 5 )
 anims/RunRight = SubResource( 3 )
 anims/RunUp = SubResource( 6 )
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 53 )
+anims/RunLeft = SubResource( 54 )
+anims/RunRight = SubResource( 52 )
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 21 )
 anim_player = NodePath("../AnimationPlayer")
@@ -854,10 +960,16 @@ parameters/playback = SubResource( 22 )
 parameters/Attack/blend_position = Vector2( 0, 1 )
 parameters/Idle/blend_position = Vector2( 0, 1 )
 parameters/Roll/blend_position = Vector2( 0, 1 )
-parameters/Run/blend_position = Vector2( 0, 1 )
+parameters/Run/blend_position = Vector2( -0.993933, 0.00635839 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="AnimationTree2" type="AnimationTree" parent="."]
+tree_root = SubResource( 56 )
+anim_player = NodePath("../AnimationPlayer2")
+parameters/playback = SubResource( 57 )
+parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 visible = false

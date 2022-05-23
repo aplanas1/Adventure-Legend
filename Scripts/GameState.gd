@@ -105,6 +105,8 @@ func player_equip_item(item : EntityItem) -> void:
 	elif (item.category_type == Types.ItemCategoryTypes.Shields and has_equipped_two_handed):
 		player_unequip_item(player_data.equipped_weapon)
 	
+	
+	
 func player_unequip_item(item : EntityItem) -> void:
 	var property = player_data.get_equipped_property_for_item(item)
 	player_data.set(property, null)
