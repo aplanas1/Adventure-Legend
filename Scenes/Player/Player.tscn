@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/Player.png" type="Texture" id=2]
@@ -642,6 +642,36 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 6 ]
 }
 
+[sub_resource type="Animation" id=62]
+resource_name = "AttackDownSpear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 36, 37 ]
+}
+
+[sub_resource type="Animation" id=63]
+resource_name = "AttackDownSword"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 32, 33 ]
+}
+
 [sub_resource type="Animation" id=60]
 resource_name = "AttackLeftSpear"
 length = 0.4
@@ -698,6 +728,36 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=64]
+resource_name = "AttackUpSpear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 34, 35 ]
+}
+
+[sub_resource type="Animation" id=65]
+resource_name = "AttackUpSword"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 27, 28 ]
+}
+
 [sub_resource type="Animation" id=53]
 length = 0.001
 tracks/0/type = "value"
@@ -711,6 +771,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=66]
+resource_name = "RunDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 23, 23 ]
 }
 
 [sub_resource type="Animation" id=54]
@@ -769,6 +844,21 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "RunUp"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 17, 17 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=29]
@@ -976,7 +1066,7 @@ position = Vector2( 30, -13 )
 texture = ExtResource( 10 )
 flip_h = true
 hframes = 6
-vframes = 5
+vframes = 7
 frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1005,11 +1095,17 @@ anims/RunRight = SubResource( 3 )
 anims/RunUp = SubResource( 6 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/AttackDownSpear = SubResource( 62 )
+anims/AttackDownSword = SubResource( 63 )
 anims/AttackLeftSpear = SubResource( 60 )
 anims/AttackRightSpear = SubResource( 61 )
+anims/AttackUpSpear = SubResource( 64 )
+anims/AttackUpSword = SubResource( 65 )
 anims/RESET = SubResource( 53 )
+anims/RunDown = SubResource( 66 )
 anims/RunLeft = SubResource( 54 )
 anims/RunRight = SubResource( 52 )
+anims/RunUp = SubResource( 67 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 21 )
