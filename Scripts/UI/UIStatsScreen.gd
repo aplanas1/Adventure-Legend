@@ -15,6 +15,7 @@ var luck_add = 0
 func _ready():
 	LoadStats()
 	PlayerStats.connect("damage_changed", self, "LoadStats")
+	PlayerStats.connect("total_health_changed", self, "LoadStats")
 	available_points = PlayerStats.stat_points
 	node_stat_points.set_text(str(available_points) + " Points")
 	if available_points == 0:
@@ -34,7 +35,10 @@ func LoadStats():
 	get_node(path_main_stats + "Constitution/StatBackground/Stat/Value").set_text(str(PlayerStats.constitution))
 	get_node(path_main_stats + "Charisma/StatBackground/Stat/Value").set_text(str(PlayerStats.charisma))
 	get_node(path_main_stats + "Luck/StatBackground/Stat/Value").set_text(str(PlayerStats.luck))
-	get_node(path_derived_stats + "VBoxContainer/Label").set_text("Damage " + str(PlayerStats.damage))
+	get_node(path_derived_stats + "VBoxContainer/MaxHealth").set_text("Total Health " + str(PlayerStats.max_health))
+	get_node(path_derived_stats + "VBoxContainer/Health").set_text("Health " + str(PlayerStats.health))
+	get_node(path_derived_stats + "VBoxContainer/WeaponDamage").set_text("Weapon Damage " + str(PlayerStats.weaponDamage))
+	get_node(path_derived_stats + "VBoxContainer/Damage").set_text("Damage " + str(PlayerStats.damage))
 
 func IncreaseStat(stat):
 	set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") + 1)

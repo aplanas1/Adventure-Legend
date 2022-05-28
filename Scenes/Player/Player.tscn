@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/Player.png" type="Texture" id=2]
@@ -715,6 +715,33 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=67]
+resource_name = "SpearDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 36, 37, 23 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=63]
 resource_name = "SpearLeft"
 length = 0.4
@@ -771,6 +798,61 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=68]
+resource_name = "SpearUp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 34, 35, 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=69]
+resource_name = "SwordDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 32, 33, 23 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=65]
 resource_name = "SwordLeft"
 length = 0.4
@@ -813,6 +895,34 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 12, 13, 14, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=70]
+resource_name = "SwordUp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 27, 28, 17 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite2:flip_h")
@@ -954,6 +1064,8 @@ graph_offset = Vector2( 234, 1 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
+[sub_resource type="AnimationNodeBlendSpace2D" id=76]
+
 [sub_resource type="AnimationNodeAnimation" id=58]
 animation = "RunLeft"
 
@@ -966,9 +1078,46 @@ blend_point_0/pos = Vector2( -1, 0 )
 blend_point_1/node = SubResource( 59 )
 blend_point_1/pos = Vector2( 1, 0 )
 
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "SwordLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "SwordRight"
+
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "SwordDown"
+
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "SwordUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=75]
+blend_point_0/node = SubResource( 71 )
+blend_point_0/pos = Vector2( -1, 0.1 )
+blend_point_1/node = SubResource( 72 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 73 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 74 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
 [sub_resource type="AnimationNodeStateMachine" id=56]
+states/Idle/node = SubResource( 76 )
+states/Idle/position = Vector2( 408, 71 )
 states/Run/node = SubResource( 55 )
-states/Run/position = Vector2( 427, 92 )
+states/Run/position = Vector2( 408, 161 )
+states/Sword/node = SubResource( 75 )
+states/Sword/position = Vector2( 571, 71 )
+transitions = [ "Idle", "Sword", SubResource( 77 ), "Sword", "Idle", SubResource( 78 ), "Idle", "Run", SubResource( 79 ), "Run", "Idle", SubResource( 80 ) ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=57]
 
@@ -1030,7 +1179,6 @@ frame = 18
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 30, -13 )
 texture = ExtResource( 10 )
-flip_h = true
 hframes = 6
 vframes = 7
 frame = 1
@@ -1064,10 +1212,14 @@ anims/RunUp = SubResource( 6 )
 anims/RESET = SubResource( 60 )
 anims/RunLeft = SubResource( 61 )
 anims/RunRight = SubResource( 62 )
+anims/SpearDown = SubResource( 67 )
 anims/SpearLeft = SubResource( 63 )
 anims/SpearRight = SubResource( 64 )
+anims/SpearUp = SubResource( 68 )
+anims/SwordDown = SubResource( 69 )
 anims/SwordLeft = SubResource( 65 )
 anims/SwordRight = SubResource( 66 )
+anims/SwordUp = SubResource( 70 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 21 )
@@ -1083,8 +1235,11 @@ __meta__ = {
 
 [node name="AnimationTree2" type="AnimationTree" parent="."]
 tree_root = SubResource( 56 )
+anim_player = NodePath("../AnimationPlayer2")
 parameters/playback = SubResource( 57 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Sword/blend_position = Vector2( -0.998358, 0.00635839 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 visible = false

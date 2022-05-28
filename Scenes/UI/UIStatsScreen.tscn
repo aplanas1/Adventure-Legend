@@ -6,25 +6,6 @@
 [ext_resource path="res://Assets/Fonts/DynamicFontRobotoRegular.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/UI/UIStatsScreen.gd" type="Script" id=5]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Control
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
-
 [node name="UIInventoryScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -496,9 +477,27 @@ margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+[node name="MaxHealth" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_right = 211.0
 margin_bottom = 14.0
+text = "Total Health 500"
+
+[node name="Health" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 18.0
+margin_right = 211.0
+margin_bottom = 32.0
+text = "Health 100"
+
+[node name="WeaponDamage" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 36.0
+margin_right = 211.0
+margin_bottom = 50.0
+text = "Weapon Damage 50"
+
+[node name="Damage" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 54.0
+margin_right = 211.0
+margin_bottom = 68.0
 text = "Damage 84"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Stats/MainStats/StatPoint/Confirm" to="." method="_on_Confirm_pressed"]

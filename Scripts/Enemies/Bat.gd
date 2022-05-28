@@ -27,6 +27,8 @@ onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
 
 func _ready():
+	get_node("HBoxContainer/TotalHealth").set_text(str(stats.max_health) + "")
+	get_node("HBoxContainer/ActualHealth").set_text(str(stats.health) + "")
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
@@ -78,6 +80,7 @@ func pick_random_state(state_list):
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= PlayerStats.damage
+	get_node("HBoxContainer/ActualHealth").set_text(str(stats.health) + "")
 	knockback = area.knockback_vector * 100
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)

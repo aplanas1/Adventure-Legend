@@ -2,24 +2,38 @@ extends Node
 
 var level = 1
 
-export(int) var max_health = 1 setget set_max_health
-var health = max_health setget set_health
+export(int) var base_health = 100 setget set_base_health
+
 
 export(int) var stat_points = 15
 export(int) var strength = 0 setget set_strength
 export(int) var dextery = 0
 export(int) var intelligence = 0
-export(int) var constitution = 0
+export(int) var constitution = 0 setget set_constitution
 export(int) var charisma = 0
 export(int) var luck = 0
+
+var max_health = base_health + (constitution * 5) setget set_max_health
+var health = max_health setget set_health
 
 var weaponDamage = 0 setget set_weaponDamage
 var damage = strength + weaponDamage
 
 signal no_health
+signal total_health_changed
 signal damage_changed
 signal max_health_changed(value)
 signal health_changed(value)
+
+func set_base_health(value):
+	base_health = value
+	self.max_health = base_health + (constitution * 5)
+	emit_signal("total_health_changed")
+
+func set_constitution(value):
+	constitution = value
+	self.max_health = base_health + (constitution * 5)
+	emit_signal("total_health_changed")
 
 func set_max_health(value):
 	max_health = value
