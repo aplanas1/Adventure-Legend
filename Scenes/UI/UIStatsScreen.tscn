@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=3 format=2]
-=======
 [gd_scene load_steps=6 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://Assets/Player/adventurerImage.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/DynamicFontRobotoItalic.tres" type="DynamicFont" id=2]
@@ -34,11 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 320.0
 margin_bottom = 180.0
-<<<<<<< Updated upstream
-script = SubResource( 1 )
-=======
 script = ExtResource( 5 )
->>>>>>> Stashed changes
 
 [node name="ColorRectBackground" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -74,8 +66,6 @@ flip_h = true
 margin_left = 204.0
 margin_right = 630.0
 margin_bottom = 350.0
-<<<<<<< Updated upstream
-=======
 size_flags_horizontal = 3
 
 [node name="Stats" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
@@ -385,17 +375,10 @@ rect_min_size = Vector2( 120, 30 )
 margin_top = 5.0
 margin_right = 96.0
 margin_bottom = 24.0
->>>>>>> Stashed changes
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Charisma"
 
-<<<<<<< Updated upstream
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_right = 426.0
-margin_bottom = 350.0
-size_flags_vertical = 3
-=======
 [node name="Change" type="Label" parent="HBoxContainer/VBoxContainer/Stats/MainStats/Charisma/StatBackground/Stat" groups=["ChangeLabels"]]
 margin_left = 100.0
 margin_top = 5.0
@@ -519,4 +502,3 @@ margin_bottom = 14.0
 text = "Damage 84"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Stats/MainStats/StatPoint/Confirm" to="." method="_on_Confirm_pressed"]
->>>>>>> Stashed changes

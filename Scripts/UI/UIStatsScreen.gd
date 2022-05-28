@@ -1,21 +1,5 @@
 extends Control
 
-<<<<<<< Updated upstream
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-=======
 onready var node_stat_points = get_node("HBoxContainer/VBoxContainer/Stats/MainStats/StatPoint/Label")
 var path_main_stats = "HBoxContainer/VBoxContainer/Stats/MainStats/"
 var path_derived_stats = "HBoxContainer/VBoxContainer/Stats/DerivedStats/"
@@ -100,4 +84,4 @@ func _on_Confirm_pressed():
 			button.set_disabled(true)
 		for label in get_tree().get_nodes_in_group("ChangeLabels"):
 			label.set_text("")
->>>>>>> Stashed changes
+
