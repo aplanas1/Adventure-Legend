@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Scenes/World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/UI/UIInventoryScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/UI/UIStatsScreen.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -613,14 +614,18 @@ position = Vector2( 16, 136 )
 [node name="UI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 0.25, 0.25 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="UIStatsScreen" parent="CanvasLayer/UI" instance=ExtResource( 13 )]
+visible = false
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="UIInventoryScreen" parent="CanvasLayer/UI" instance=ExtResource( 12 )]
 visible = false
 margin_right = 1280.0
 margin_bottom = 720.0
+rect_scale = Vector2( 0.25, 0.25 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/UI"]
 volume_db = -10.0
