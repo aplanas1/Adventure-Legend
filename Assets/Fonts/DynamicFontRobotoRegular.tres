@@ -3,4 +3,8 @@
 [ext_resource path="res://Assets/Fonts/DynamicFontDataRobotoCondensedRegular.tres" type="DynamicFontData" id=1]
 
 [resource]
+size = 24
+use_filter = true
+extra_spacing_top = -10
+extra_spacing_bottom = -10
 font_data = ExtResource( 1 )

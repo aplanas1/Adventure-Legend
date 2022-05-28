@@ -39,7 +39,6 @@ func set_identifier(value : String) -> void:
 func _generate_identifier() -> void:
 	identifier = (str(category_type) + name).md5_text()
 
-
 func is_two_handed() -> bool:
 	match category_type:
 		Types.ItemCategoryTypes.TwoHandedWeapons, Types.ItemCategoryTypes.Bows:

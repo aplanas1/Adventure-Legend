@@ -23,12 +23,23 @@ func _input(event: InputEvent) -> void:
 			GameState.state = Types.GameStates.Active
 			_play_ui_audio(audio_stream_close_inventory)
 		else:
+<<<<<<< Updated upstream
 			show_character()
+=======
+			show_stats()
+>>>>>>> Stashed changes
 
 
 func show_inventory() -> void:	
 	_ui_stats_screen.set_visible(false)
 	_ui_inventory_screen.set_visible(true)
+	_ui_stats_screen.set_visible(false)
+	GameState.state = Types.GameStates.Inventory
+	_play_ui_audio(audio_stream_open_inventory)
+	
+func show_stats() -> void:	
+	_ui_stats_screen.set_visible(true)
+	_ui_inventory_screen.set_visible(false)
 	GameState.state = Types.GameStates.Inventory
 	_play_ui_audio(audio_stream_open_inventory)
 

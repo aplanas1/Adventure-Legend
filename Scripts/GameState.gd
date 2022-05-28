@@ -104,6 +104,7 @@ func player_equip_item(item : EntityItem) -> void:
 	# unequip the weapon
 	elif (item.category_type == Types.ItemCategoryTypes.Shields and has_equipped_two_handed):
 		player_unequip_item(player_data.equipped_weapon)
+	PlayerStats.weaponDamage = item.attack_power
 	
 	
 	
