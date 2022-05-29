@@ -477,27 +477,33 @@ margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MaxHealth" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_right = 211.0
-margin_bottom = 14.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="MaxHealth" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 24.0
+margin_right = 211.0
+margin_bottom = 38.0
 text = "Total Health 500"
 
 [node name="Health" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 18.0
+margin_top = 42.0
 margin_right = 211.0
-margin_bottom = 32.0
+margin_bottom = 56.0
 text = "Health 100"
 
 [node name="WeaponDamage" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 36.0
+margin_top = 60.0
 margin_right = 211.0
-margin_bottom = 50.0
+margin_bottom = 74.0
 text = "Weapon Damage 50"
 
 [node name="Damage" type="Label" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 54.0
+margin_top = 78.0
 margin_right = 211.0
-margin_bottom = 68.0
+margin_bottom = 92.0
 text = "Damage 84"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Stats/MainStats/StatPoint/Confirm" to="." method="_on_Confirm_pressed"]
