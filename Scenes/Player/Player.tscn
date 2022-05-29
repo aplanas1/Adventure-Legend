@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Overlap/Hitbox.tscn" type="PackedScene" id=3]
@@ -198,6 +198,22 @@ tracks/2/keys = {
 "stream": ExtResource( 8 )
 } ],
 "times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=118]
+resource_name = "Death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26 ]
 }
 
 [sub_resource type="Animation" id=87]
@@ -1267,6 +1283,14 @@ blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 
+[sub_resource type="AnimationNodeAnimation" id=119]
+animation = "Death"
+
+[sub_resource type="AnimationNodeBlendTree" id=120]
+graph_offset = Vector2( 0, 101.5 )
+nodes/Animation/node = SubResource( 119 )
+nodes/Animation/position = Vector2( 440, 140 )
+
 [sub_resource type="AnimationNodeAnimation" id=96]
 animation = "IdleLeft"
 
@@ -1383,9 +1407,13 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=117]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=121]
+
 [sub_resource type="AnimationNodeStateMachine" id=56]
 states/Dash/node = SubResource( 115 )
 states/Dash/position = Vector2( 257, 71 )
+states/Death/node = SubResource( 120 )
+states/Death/position = Vector2( 408, -14 )
 states/Idle/node = SubResource( 76 )
 states/Idle/position = Vector2( 408, 71 )
 states/Run/node = SubResource( 55 )
@@ -1394,8 +1422,9 @@ states/Spear/node = SubResource( 106 )
 states/Spear/position = Vector2( 571, 161 )
 states/Sword/node = SubResource( 75 )
 states/Sword/position = Vector2( 571, 71 )
-transitions = [ "Idle", "Sword", SubResource( 77 ), "Sword", "Idle", SubResource( 78 ), "Idle", "Run", SubResource( 79 ), "Run", "Idle", SubResource( 80 ), "Idle", "Spear", SubResource( 109 ), "Spear", "Idle", SubResource( 110 ), "Dash", "Idle", SubResource( 116 ), "Idle", "Dash", SubResource( 117 ) ]
+transitions = [ "Idle", "Sword", SubResource( 77 ), "Sword", "Idle", SubResource( 78 ), "Idle", "Run", SubResource( 79 ), "Run", "Idle", SubResource( 80 ), "Idle", "Spear", SubResource( 109 ), "Spear", "Idle", SubResource( 110 ), "Dash", "Idle", SubResource( 116 ), "Idle", "Dash", SubResource( 117 ), "Idle", "Death", SubResource( 121 ) ]
 start_node = "Idle"
+graph_offset = Vector2( -15, -79 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=57]
 
@@ -1437,6 +1466,7 @@ anims/DashDown = SubResource( 81 )
 anims/DashLeft = SubResource( 82 )
 anims/DashRight = SubResource( 83 )
 anims/DashUp = SubResource( 84 )
+anims/Death = SubResource( 118 )
 anims/IdleDown = SubResource( 87 )
 anims/IdleLeft = SubResource( 88 )
 anims/IdleRight = SubResource( 89 )

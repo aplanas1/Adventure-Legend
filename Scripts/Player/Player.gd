@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const PlayerHurtSound = preload("res://Scenes/Player/PlayerHurtSound.tscn")
+const PlayerDeathEffect = preload("res://Scenes/Player/PlayerDeathEffect.tscn")
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
@@ -10,7 +11,8 @@ export var FRICTION = 500
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACK,
+	DEATH
 }
 
 var state = MOVE
@@ -25,11 +27,19 @@ onready var sworHitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
+signal death
+
 func _ready():
 	randomize()
-	stats.connect("no_health", self, "queue_free")
+	stats.connect("no_health", self, "death")
 	animationTree.active = true
 	sworHitbox.knockback_vector = roll_vector
+
+func death():
+	queue_free()
+	var playerDeathEffect = PlayerDeathEffect.instance()
+	get_parent().add_child(playerDeathEffect)
+	playerDeathEffect.global_position = global_position
 
 func _process(delta):
 	if GameState.state == Types.GameStates.Active:
@@ -40,6 +50,8 @@ func _process(delta):
 				roll_state(delta)
 			ATTACK:
 				attack_state(delta)
+			DEATH:
+				pass
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO

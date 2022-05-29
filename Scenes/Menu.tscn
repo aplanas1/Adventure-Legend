@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/menu.jpg" type="Texture" id=1]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/DynamicFontDataRobotoCondensedBoldItalic.tres" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 300
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 200
+use_filter = true
+extra_spacing_top = 30
+extra_spacing_bottom = 30
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Menu" type="Sprite" parent="."]
+scale = Vector2( 0.107, 0.09 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Label" type="Label" parent="Menu"]
+margin_left = 448.598
+margin_top = 444.444
+margin_right = 2593.6
+margin_bottom = 797.444
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Adventure Legend"
+
+[node name="Play" type="Button" parent="Menu"]
+margin_left = 822.43
+margin_top = 977.777
+margin_right = 2137.43
+margin_bottom = 1228.78
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+
+[node name="Exit" type="Button" parent="Menu"]
+margin_left = 822.43
+margin_top = 1422.22
+margin_right = 2137.43
+margin_bottom = 1733.22
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_Button_pressed"]
