@@ -128,6 +128,7 @@ text = "30"
 material = SubResource( 12 )
 frames = SubResource( 6 )
 animation = "AnimationFly"
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 

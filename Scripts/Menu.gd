@@ -6,6 +6,7 @@ func _ready():
 
 func play():
 	get_tree().change_scene("res://Scenes/World.tscn")
+	PlayerStats.health = PlayerStats.max_health
 
 func exit():
 	get_tree().quit()
