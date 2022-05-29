@@ -4,7 +4,7 @@ var level = 1
 
 export(int) var base_health = 100 setget set_base_health
 
-
+var weapon_type = Types.ItemCategoryTypes.OneHandedWeapons
 export(int) var stat_points = 15
 export(int) var strength = 0 setget set_strength
 export(int) var dextery = 0

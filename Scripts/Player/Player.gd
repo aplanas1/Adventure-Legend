@@ -4,7 +4,7 @@ const PlayerHurtSound = preload("res://Scenes/Player/PlayerHurtSound.tscn")
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
-export var ROLL_SPEED = 125
+export var ROLL_SPEED = 200
 export var FRICTION = 500
 
 enum {
@@ -18,8 +18,8 @@ var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
 
-onready var animationPlayer = $AnimationPlayer
-onready var animationTree = $AnimationTree
+onready var animationPlayer = $AnimationPlayer2
+onready var animationTree = $AnimationTree2
 onready var animationState = animationTree.get("parameters/playback")
 onready var sworHitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
@@ -52,8 +52,9 @@ func move_state(delta):
 		sworHitbox.knockback_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Attack/blend_position", input_vector)
-		animationTree.set("parameters/Roll/blend_position", roll_vector)
+		animationTree.set("parameters/Sword/blend_position", input_vector)
+		animationTree.set("parameters/Spear/blend_position", input_vector)
+		animationTree.set("parameters/Dash/blend_position", roll_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -70,13 +71,16 @@ func move_state(delta):
 		
 func roll_state(_delta):
 	velocity = roll_vector * ROLL_SPEED
-	animationState.travel("Roll")
+	animationState.travel("Dash")
 	hurtbox.start_invincibility(0.2)  #added invincibilty 0.2 sec into roll_state
 	move()
 	
 func attack_state(_delta):
 	velocity = Vector2.ZERO
-	animationState.travel("Attack")
+	if (PlayerStats.weapon_type == Types.ItemCategoryTypes.OneHandedWeapons):
+		animationState.travel("Sword")
+	else:
+		animationState.travel("Spear")
 	
 func move():
 	velocity = move_and_slide(velocity)

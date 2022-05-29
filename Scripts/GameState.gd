@@ -104,7 +104,9 @@ func player_equip_item(item : EntityItem) -> void:
 	# unequip the weapon
 	elif (item.category_type == Types.ItemCategoryTypes.Shields and has_equipped_two_handed):
 		player_unequip_item(player_data.equipped_weapon)
-	PlayerStats.weaponDamage = item.attack_power
+	if (item.category_type == Types.ItemCategoryTypes.TwoHandedWeapons || item.category_type == Types.ItemCategoryTypes.OneHandedWeapons):
+		PlayerStats.weaponDamage = item.attack_power
+		PlayerStats.weapon_type = item.category_type
 	
 	
 	
@@ -112,7 +114,9 @@ func player_unequip_item(item : EntityItem) -> void:
 	var property = player_data.get_equipped_property_for_item(item)
 	player_data.set(property, null)
 	Events.emit_signal("on_item_unequipped", item)
-	
+	if (item.category_type == Types.ItemCategoryTypes.TwoHandedWeapons || item.category_type == Types.ItemCategoryTypes.OneHandedWeapons):
+		PlayerStats.weaponDamage = 0
+		PlayerStats.weapon_type = Types.ItemCategoryTypes.OneHandedWeapons
 
 func player_check_is_item_equipped(item : EntityItem) -> bool:
 	var property = player_data.get_equipped_property_for_item(item)	
